@@ -1,16 +1,17 @@
 $('#addTaskButton').click ->
 	name = $('#taskName').val()
-	tm.addTask name
-
-	tv.clearTaskName()
-	tv.clearTasksList()
-	tv.loadTasksList()
+	if name.length > 0
+		tm.addTask name
+		tv.clearTaskName()
+		tv.clearTasksList()
+		tv.loadTasksList()
 
 $('#addCategoryButton').click ->
 	name = $('#categoryName').val()
-	tv.addCategory name
-	tm.addCategory name
-	tv.clearCategoryName()
+	if name.length > 0
+		tv.addCategory name
+		tm.addCategory name
+		tv.clearCategoryName()
 
 #Live Events
 
