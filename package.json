@@ -1,0 +1,10 @@
+{
+  "name": "SimpleApplication",
+  "version": "0.0.7",
+  "dependencies": {
+    "express": "*",
+    "jade": "*",
+    "liveload": "*",
+    "less-middleware": "*"
+  }
+}
