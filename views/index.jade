@@ -12,16 +12,16 @@ html(lang="en", ng-app="myAppModule", manifest=(debug === true ? "" : "manifest.
 			div
 				//Category LIST
 				div.category-column
-					input#categoryName(placeholder="Add a category", type="text")
+					input#categoryName.add-item(placeholder="Add a category", type="text")
 					button.btn#addCategoryButton Add
 					div.category-list
 				
 
 				//TASKS LIST
 				div.tasks-column
-					div.task-list
-					input#newTaskDescription(placeholder="Add a task", type="text")
+					input#taskName.add-item(placeholder="Add a task", type="text")
 					button.btn#addTaskButton Add
+					div.task-list
 					
 
 		if debug

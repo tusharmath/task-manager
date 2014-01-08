@@ -4,19 +4,24 @@
 	class CategoryManager
 		constructor: ->
 			@_Categories = []
+			@selectedCategory = -1
 		addCategory: (name) -> @_Categories.push new Category name
 		removeCategory: (id) -> @_Categories.splice id, 1
-		getAllTasks: (CategoryId) -> @_Categories[CategoryId].getAllTasks()
+		getAllTasks: (CategoryId = @selectedCategory) -> @_Categories[CategoryId].getAllTasks()
 		getAllCategorys: () -> @_Categories
 		getCategoryCount: () -> @_Categories.length
+		setCategorySelectedIndex: (val) ->
+			@selectedCategory = Number val
+		getCategorySelectedIndex: () ->
+			@selectedCategory
 
 
 			
-		addTask: (description, CategoryId) ->
+		addTask: (description, CategoryId = @selectedCategory) ->
 			@_Categories[CategoryId].addTask(new Task description)
-		removeTask: (taskId, CategoryId) ->
+		removeTask: (taskId, CategoryId = @selectedCategory) ->
 			@_Categories[CategoryId].deleteTask taskId
-		updateTask: (taskId, CategoryId, description) ->
+		updateTask: (taskId, CategoryId = @selectedCategory, description) ->
 			@_Categories[CategoryId].getTask(taskId).update description
 
 	class Category

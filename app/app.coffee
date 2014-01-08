@@ -2,22 +2,18 @@ $('#addTaskButton').click ->
 	name = $('#taskName').val()
 	tv.addTask name
 	tm.addTask name
-	$('#taskName').val("")
-
+	tv.clearTaskName()
 
 $('#addCategoryButton').click ->
 	name = $('#categoryName').val()
 	tv.addCategory name
 	tm.addCategory name
-	$('#categoryName').val("")
+	tv.clearCategoryName()
 
 #Live Events
 
 $('.task-item').live 'click', (e) ->
 	$(e).removeAttr 'disabled'
-
-$('.task-item').live 'focusout', (e) ->
-	$(e).attr 'disabled'
 
 $('.category-item').live 'click', (e)->		
 	index = $(e).attr 'index'
@@ -26,8 +22,12 @@ $('.category-item').live 'click', (e)->
 	tm.setCategorySelectedIndex index
 
 	#updating ui
-	i.attr 'category-selected', false for i in $.all('[index]')
+	tv.deSelectAllCategories()
 	$(e).attr 'category-selected', true
+
+	tasks = tm.getAllTasks()
+	tv.clearTasksList()
+	tv.loadTasksList(tasks)
 
 
 # Demo insert
