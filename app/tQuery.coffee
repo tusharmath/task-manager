@@ -3,17 +3,25 @@
 	#private methods
 
 	_findItem = (selector) -> document.querySelector selector
+	_findAll = (selector) -> document.querySelectorAll selector
 
 	class tQuery
 		
 		constructor: (param) ->
 			if typeof param is 'string'
 				@_domItem = _findItem param
+				@_selector = param
 			else
 				@_domItem = param
 			@
 		#Events
-		on: ->
+		live: (eventName, callback) ->
+			document.addEventListener 'click', (e,i) =>
+				console.log 'Doc clicked!', @_selector
+				for i in _findAll @_selector
+					callback e.srcElement if i is e.srcElement
+						
+
 		draggable: ->
 		droppable: ->
 		click: (callback) -> 
