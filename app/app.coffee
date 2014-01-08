@@ -1,8 +1,10 @@
 $('#addTaskButton').click ->
 	name = $('#taskName').val()
-	tv.addTask name
 	tm.addTask name
+
 	tv.clearTaskName()
+	tv.clearTasksList()
+	tv.loadTasksList tm.getAllTasks()
 
 $('#addCategoryButton').click ->
 	name = $('#categoryName').val()
@@ -12,6 +14,11 @@ $('#addCategoryButton').click ->
 
 #Live Events
 
+$('.close').live 'click', (e) ->
+	index = $(e).attr 'index'
+	tm.removeTask index
+	tv.clearTasksList()
+	tv.loadTasksList tm.getAllTasks()
 
 $('.category-item').live 'click', (e)->		
 	index = $(e).attr 'index'
@@ -40,12 +47,7 @@ $('#addCategoryButton')._domItem.click()
 
 $('[index]')._domItem.click()
 
-
-$('#taskName').val('Eat a pie')
-$('#addTaskButton')._domItem.click()
-
-$('#taskName').val('Drink some tea')
-$('#addTaskButton')._domItem.click()
-
-$('#taskName').val('Play squash')
-$('#addTaskButton')._domItem.click()
+tm.addTask 'Eat a pie'
+tm.addTask 'Drink some tea'
+tm.addTask 'Play squash'
+tv.loadTasksList tm.getAllTasks()

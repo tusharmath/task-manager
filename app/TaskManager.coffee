@@ -27,7 +27,7 @@
 	class Category
 		constructor:(@name) -> @_tasks = []
 		addTask: (task)-> @_tasks.push task
-		deleteTask: (id) ->  @_tasks.splice id, 1
+		deleteTask: (id) ->	@_tasks.splice id, 1
 		CategoryTasks : -> @_tasks
 		getTask: (id) -> @_tasks[id]
 		getAllTasks: () -> @_tasks

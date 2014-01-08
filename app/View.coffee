@@ -3,14 +3,17 @@
 		
 	window.tv = {}
 
-	tv.addTask= (name) ->
+	tv.addTask= (name, index) ->
 		task = $('.task-list').append('div')
 		task.append('span').innerHtml name
-		task.append('span').addClass('close').innerHtml 'x'
+		task.append('span').addClass('close').innerHtml('x')
+			.attr('index', index)
+
+
 		task.addClass 'task-item'
 
 	tv.loadTasksList = (tasks) ->
-		tv.addTask t.description for t in tasks
+		tv.addTask t.description, i for t,i in tasks
 		
 
 	tv.addCategory = (name) ->
