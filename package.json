@@ -6,6 +6,7 @@
     "jade": "*",
     "liveload": "*",
     "less-middleware": "*",
+    "connect-coffee-script":"*",
     "grunt-gh-pages": "*",
     "grunt-contrib-jade": "*",
     "grunt-contrib-less": "*",
