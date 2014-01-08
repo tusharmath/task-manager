@@ -7,6 +7,7 @@
     "liveload": "*",
     "less-middleware": "*",
     "connect-coffee-script":"*",
+    "matchdep": "*",
     "grunt-gh-pages": "*",
     "grunt-contrib-jade": "*",
     "grunt-contrib-less": "*",
