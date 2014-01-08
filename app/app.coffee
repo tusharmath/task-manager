@@ -1,22 +1,19 @@
-model =
-	categoryCount: 0
-	categorySelectedIndex: -1
-	categories: []
-
 $('#addCategoryButton').click ->
 	name = $('#categoryName').val()
+	tv.addCategory name
+	tm.addCategory name
+	$('#categoryName').val("")
 
-	#Adding data to model
-	
-
-	category  = $('.category-list').append('div')
-	category.innerHtml(name)
-	category.attr('index', tm.getCategoryCount() )
-	category.click ->
-		model.categorySelectedIndex = Number category.attr 'index'
-	
-	tm.addCategory name	
+$('[index]').live 'click', (e)->		
+	index = $(e).attr 'index'
+	tm.setCategorySelectedIndex index
+	i.attr 'category-selected', false for i in $.all('[index]')
+	$(e).attr 'category-selected', true
 
 
+# Demo insert
+$('#categoryName').val('Demo List 1')
+$('#addCategoryButton')._domItem.click()
 
-	 
+$('#categoryName').val('Demo List 2')
+$('#addCategoryButton')._domItem.click()

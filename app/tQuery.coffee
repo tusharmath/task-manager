@@ -39,18 +39,25 @@
 			new tQuery element
 		
 		#Data Extraction
+		addClass: (name) ->
+			if  r = @attr('class') is null
+				@attr 'class', name
+			else 
+				@attr 'class', r + ' ' + name
+			
 		attr: (name, value) ->
 			if value isnt undefined
 				@_domItem.setAttribute name, value
 			@_domItem.getAttribute name
-		val: -> @_domItem.value
+		val: (val) -> 
+			if val isnt undefined
+				@_domItem.value = val
+			@_domItem.value
 		innerHtml: (value) ->  @_domItem.innerHTML = value
 		
 
-
-
-
-
 	window.$ = (selector) -> new tQuery selector
-
+	window.$.all = (selector) ->
+		return ($ i for i in _findAll(selector))
+	
 )(window)

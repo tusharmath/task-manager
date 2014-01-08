@@ -1,7 +1,56 @@
 body{
-		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 14px
 }
-.lists-column, .tasks-column{
+.category-column, .tasks-column{
 	display: inline-block;
 	vertical-align: top;
+	padding: 8px;
+}
+
+.category-column{
+	background-color: #ccc;
+}
+
+.category-item{
+	font-size: 14px;
+	margin: 8px 4px;
+	font-weight: bold;
+	color: #8A1818;
+}
+
+input[type="text"]{
+	padding: 8px 16px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	font-size: 16px;
+}
+
+.container{
+	margin: auto;
+	width: 600px;
+	border: 8px solid #C95959;
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+.btn {
+  border: 1px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #7373E0;
+  border-radius: 4px;
+  padding: 8px 18px;
+}
+
+.btn:active{
+	background-color: #6A6ABD;
+}
+
+.tasks-column{
+	float: right;
+}
+
+[category-selected="true"]{
+	color: #000
 }

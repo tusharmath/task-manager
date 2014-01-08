@@ -7,28 +7,28 @@ html(lang="en", ng-app="myAppModule", manifest=(debug === true ? "" : "manifest.
 		else
 			link(rel="stylesheet", type="text/css", href="style-" + version + ".css")
 	body
+		h1 Task Manager
 		.container
-			h1 Task Manager
 			div
-				//LISTS LIST
-				div.lists-column
-					input#categoryName(placeholder="Add a category")
-					button#addCategoryButton Add a category
+				//Category LIST
+				div.category-column
+					input#categoryName(placeholder="Add a category", type="text")
+					button.btn#addCategoryButton Add
 					div.category-list
 				
 
 				//TASKS LIST
 				div.tasks-column
-					
 					div.task-list
-					input#newTaskDescription(placeholder="Add a task")
-					button#addTaskButton Add Task
+					input#newTaskDescription(placeholder="Add a task", type="text")
+					button.btn#addTaskButton Add
 					
 
 		if debug
 			script(src='http://localhost:35729/livereload.js')
 			script(src="tQuery.js")
 			script(src="TaskManager.js")
+			script(src="View.js")
 			script(src="app.js")
 		else
 			script(src='script-' + version + '.js')
