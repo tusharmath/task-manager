@@ -11,16 +11,20 @@
 			if typeof param is 'string'
 				@_domItem = _findItem param
 				@_selector = param
-			else
+			else if param instanceof HTMLElement
 				@_domItem = param
+			else if param instanceof tQuery
+				@_domItem = param._domItem
 			@
 		#Events
 		live: (eventName, callback) ->
 			document.addEventListener 'click', (e,i) =>
-				console.log 'Doc clicked!', @_selector
+				#console.log 'Doc clicked!', @_selector
 				for i in _findAll @_selector
-					callback e.srcElement if i is e.srcElement
+					if i is e.srcElement
+						callback e.srcElement 
 						
+			@
 
 		draggable: ->
 		droppable: ->
