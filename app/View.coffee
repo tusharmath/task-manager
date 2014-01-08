@@ -5,7 +5,8 @@
 
 	tv.addTask= (name) ->
 		task = $('.task-list').append('div')
-		task.innerHtml(name)
+		task.append('span').innerHtml name
+		task.append('span').addClass('close').innerHtml 'x'
 		task.addClass 'task-item'
 
 	tv.loadTasksList = (tasks) ->
