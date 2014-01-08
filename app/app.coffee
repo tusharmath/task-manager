@@ -12,8 +12,6 @@ $('#addCategoryButton').click ->
 
 #Live Events
 
-$('.task-item').live 'click', (e) ->
-	$(e).removeAttr 'disabled'
 
 $('.category-item').live 'click', (e)->		
 	index = $(e).attr 'index'
