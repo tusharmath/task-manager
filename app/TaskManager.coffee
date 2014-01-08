@@ -5,6 +5,8 @@
 		constructor: ->
 			@_Categories = []
 			@selectedCategory = -1
+		
+		#GROUP  MANIPULATION
 		addCategory: (name) -> @_Categories.push new Category name
 		removeCategory: (id) -> @_Categories.splice id, 1
 		getAllTasks: (CategoryId = @selectedCategory) -> @_Categories[CategoryId].getAllTasks()
@@ -16,13 +18,19 @@
 			@selectedCategory
 
 
-			
-		addTask: (description, CategoryId = @selectedCategory) ->
-			@_Categories[CategoryId].addTask(new Task description)
-		removeTask: (taskId, CategoryId = @selectedCategory) ->
-			@_Categories[CategoryId].deleteTask taskId
-		updateTask: (taskId, description, CategoryId = @selectedCategory) ->
-			@_Categories[CategoryId].getTask(Number(taskId)).update description
+		#TASKS MANIPULATION	
+		addTask: (description, categoryId = @selectedCategory) ->
+			@_Categories[categoryId].addTask(new Task description)
+		
+		removeTask: (taskId, categoryId = @selectedCategory) ->
+			@_Categories[categoryId].deleteTask taskId
+		
+		updateTask: (taskId, description, categoryId = @selectedCategory) ->
+			@_Categories[categoryId].getTask(Number(taskId)).update description
+		
+		getTask: (taskId, categoryId = @selectedCategory) ->
+			@_Categories[categoryId].getTask Number taskId
+
 
 	class Category
 		constructor:(@name) -> @_tasks = []

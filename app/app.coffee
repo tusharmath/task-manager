@@ -4,7 +4,7 @@ $('#addTaskButton').click ->
 
 	tv.clearTaskName()
 	tv.clearTasksList()
-	tv.loadTasksList tm.getAllTasks()
+	tv.loadTasksList()
 
 $('#addCategoryButton').click ->
 	name = $('#categoryName').val()
@@ -13,6 +13,40 @@ $('#addCategoryButton').click ->
 	tv.clearCategoryName()
 
 #Live Events
+
+$('.task-item').live 'dragstart', (el, ev)-> 
+	index = $(el).attr 'index'
+	ev.dataTransfer.setData 'index', index
+	true
+
+
+$('.category-item').live 'dragenter', (el, ev) ->
+	ev.preventDefault()
+	true
+	
+$('.category-item').live 'dragenter', (el, ev) ->
+	el.classList.add('over');
+
+$('.category-item').live 'dragleave', (el, ev) ->
+	el.classList.remove('over');
+
+$('.category-item').live 'dragover', (el, ev) ->
+	ev.preventDefault()
+	false
+	
+$('.category-item').live 'drop', (el, ev) ->
+
+	index = ev.dataTransfer.getData 'index'
+	el.classList.remove('over')
+
+	task = tm.getTask index
+	tm.removeTask index
+	tm.setCategorySelectedIndex $(el).attr 'index'
+	tm.addTask task.description
+
+	tv.clearTasksList()
+	tv.loadTasksList tm.getAllTasks()
+	tv.setCategorySelected()
 
 $('.close').live 'click', (e) ->
 	index = $(e).attr 'index'
@@ -25,7 +59,7 @@ $('.task-item input[type="text"]').live 'focusout', (e) ->
 	index = $(e).attr('index')
 	tm.updateTask index, val
 	tv.clearTasksList()
-	tv.loadTasksList tm.getAllTasks()
+	tv.loadTasksList()
 
 $('.category-item').live 'click', (e)->		
 	index = $(e).attr 'index'
@@ -34,12 +68,10 @@ $('.category-item').live 'click', (e)->
 	tm.setCategorySelectedIndex index
 
 	#updating ui
-	tv.deSelectAllCategories()
-	$(e).attr 'category-selected', true
-
-	tasks = tm.getAllTasks()
+	tv.setCategorySelected()
+	
 	tv.clearTasksList()
-	tv.loadTasksList(tasks)
+	tv.loadTasksList()
 
 
 # Demo insert
@@ -57,4 +89,4 @@ $('[index]')._domItem.click()
 tm.addTask 'Eat a pie'
 tm.addTask 'Drink some tea'
 tm.addTask 'Play squash'
-tv.loadTasksList tm.getAllTasks()
+tv.loadTasksList()

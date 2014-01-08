@@ -3,6 +3,12 @@
 		
 	window.tv = {}
 
+	tv.setCategorySelected = () ->
+		tv.deSelectAllCategories()
+		index = tm.getCategorySelectedIndex()
+		$('.category-item[index="'+index+'"]').attr 'category-selected', true
+
+
 	tv.addTask= (name, index) ->
 		task = $('.task-list')
 			.append('div')
@@ -26,7 +32,8 @@
 
 		task.addClass 'task-item'
 
-	tv.loadTasksList = (tasks) ->
+	tv.loadTasksList = () ->
+		tasks = tm.getAllTasks()
 		tv.addTask t.description, i for t,i in tasks
 		
 
