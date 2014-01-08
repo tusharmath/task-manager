@@ -18,15 +18,14 @@
 			@
 		#Events
 		live: (eventName, callback) ->
-			document.addEventListener eventName, (e,i) =>
+			document.addEventListener eventName, (ev) =>
 				for i in _findAll @_selector
-					if i is e.srcElement
-						callback e.srcElement
+					if i is ev.srcElement
+						callback ev.srcElement, ev
 			
 			@
 
-		draggable: ->
-		droppable: ->
+
 		click: (callback) -> 
 			@_domItem.addEventListener 'click', callback
 			@

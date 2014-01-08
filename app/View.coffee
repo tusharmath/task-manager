@@ -4,7 +4,16 @@
 	window.tv = {}
 
 	tv.addTask= (name, index) ->
-		task = $('.task-list').append('div')
+		task = $('.task-list')
+			.append('div')
+			.attr('draggable', true)
+			.attr('index', index)
+
+		task.append('span')
+			.innerHtml('#')	
+			
+			.addClass('draggable-hash')
+
 		task.append('input')
 			.val(name)
 			.attr('index', index)

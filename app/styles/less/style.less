@@ -18,6 +18,7 @@ body{
 	margin: 8px 4px;
 	font-weight: bold;
 	color: #8A1818;
+	padding: 8px;
 }
 
 .task-item{
@@ -25,6 +26,7 @@ body{
 	font-weight: bold;
 	padding: 4px 4px;
 	color: #8A1818;	
+	background-color: #FFF;
 }
 
 .task-item input:focus{
@@ -36,7 +38,7 @@ body{
 	border: none;
 	font-weight: inherit;
 	color: inherit;
-	width: 90%;
+	width: auto;
 }
 
 input.add-item{
@@ -87,4 +89,24 @@ input.add-item{
 	text-shadow: 0 1px 0 #FFF;
 	opacity: .2;
 	padding: 4px
+}
+
+.draggable-hash{
+	padding: 4px 10px;
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+  cursor: move;
+  
+}
+
+.over {
+  outline: 2px dashed #888;
 }
