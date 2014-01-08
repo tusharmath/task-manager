@@ -1,12 +1,12 @@
 {
   "name": "SimpleApplication",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
     "express": "*",
     "jade": "*",
     "liveload": "*",
     "less-middleware": "*",
-    "connect-coffee-script":"*",
+    "connect-coffee-script": "*",
     "matchdep": "*",
     "grunt-gh-pages": "*",
     "grunt-contrib-jade": "*",
