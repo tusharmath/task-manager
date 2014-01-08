@@ -3,6 +3,12 @@
 		
 	window.tv = {}
 
+	tv.addTask= (name) ->
+		task = $('.task-list').append('div')
+		task.innerHtml(name)
+		task.addClass 'task-item'
+
+
 	tv.addCategory = (name) ->
 		
 		category  = $('.category-list').append('div')
