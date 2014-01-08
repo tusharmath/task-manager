@@ -18,12 +18,11 @@
 			@
 		#Events
 		live: (eventName, callback) ->
-			document.addEventListener 'click', (e,i) =>
-				#console.log 'Doc clicked!', @_selector
+			document.addEventListener eventName, (e,i) =>
 				for i in _findAll @_selector
 					if i is e.srcElement
-						callback e.srcElement 
-						
+						callback e.srcElement
+			
 			@
 
 		draggable: ->
@@ -49,13 +48,15 @@
 		attr: (name, value) ->
 			if value isnt undefined
 				@_domItem.setAttribute name, value
-				@
+				return @
 			else
 				@_domItem.getAttribute name
 		val: (val) -> 
 			if val isnt undefined
 				@_domItem.value = val
-			@_domItem.value
+				return @
+			else	
+				@_domItem.value
 		innerHtml: (value) ->
 			if value isnt undefined
 				@_domItem.innerHTML = value

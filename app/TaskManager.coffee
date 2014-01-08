@@ -21,8 +21,8 @@
 			@_Categories[CategoryId].addTask(new Task description)
 		removeTask: (taskId, CategoryId = @selectedCategory) ->
 			@_Categories[CategoryId].deleteTask taskId
-		updateTask: (taskId, CategoryId = @selectedCategory, description) ->
-			@_Categories[CategoryId].getTask(taskId).update description
+		updateTask: (taskId, description, CategoryId = @selectedCategory) ->
+			@_Categories[CategoryId].getTask(Number(taskId)).update description
 
 	class Category
 		constructor:(@name) -> @_tasks = []

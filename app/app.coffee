@@ -20,6 +20,13 @@ $('.close').live 'click', (e) ->
 	tv.clearTasksList()
 	tv.loadTasksList tm.getAllTasks()
 
+$('.task-item input[type="text"]').live 'focusout', (e) ->
+	val = $(e).val()
+	index = $(e).attr('index')
+	tm.updateTask index, val
+	tv.clearTasksList()
+	tv.loadTasksList tm.getAllTasks()
+
 $('.category-item').live 'click', (e)->		
 	index = $(e).attr 'index'
 

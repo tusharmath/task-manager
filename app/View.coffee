@@ -5,8 +5,13 @@
 
 	tv.addTask= (name, index) ->
 		task = $('.task-list').append('div')
-		task.append('span').innerHtml name
-		task.append('span').addClass('close').innerHtml('x')
+		task.append('input')
+			.val(name)
+			.attr('index', index)
+			.attr('type', 'text')
+		task.append('span')
+			.addClass('close')
+			.innerHtml('x')
 			.attr('index', index)
 
 
