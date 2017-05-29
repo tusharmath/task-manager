@@ -1,5 +1,7 @@
 #Setup
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tusharmath/task-manager.svg)](https://greenkeeper.io/)
+
 1. Clone repository.
 
 	```bash
